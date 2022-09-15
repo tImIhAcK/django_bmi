@@ -1,0 +1,8 @@
+<form  action="{% url 'accounts:login' %}" method='post'>
+    {% csrf_token %}
+    {% crispy form %}
+    <div class="col-md-6 d-flex justify-content-between">
+        <a href="#!">Forgot password?</a>
+        <p>Not a member? <a href="#!">Register</a></p>
+    </div>
+</form>

@@ -21,8 +21,8 @@ def login(request):
                 messages.success(request, 'Login succesfully')
             else:
                 messages.error(request, 'User does not exist... Create an acount')
-                return render(request, 'accounts/login.html', {'form': form})
-    return render(request, 'accounts/login.html', {'form': form})
+                return render(request, 'accounts/auths.html', {'form': form})
+    return render(request, 'accounts/auths.html', {'form': form})
 
 def register(request):
     form = RegisterForm()
@@ -41,7 +41,7 @@ def register(request):
             messages.success(request, 'Account created successfully')
         else:
             messages.error(request, 'Invalid')
-            return render(request, 'accounts/register.html', {'form': form})
-    return render(request, 'accounts/register.html', {'form': form})
+            return render(request, 'accounts/auths.html', {'form': form})
+    return render(request, 'accounts/auths.html', {'form': form})
         
     
