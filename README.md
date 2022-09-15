@@ -11,6 +11,7 @@ A Django project to calculate BMI
 - [ ] A completed task
 
 ###### file tree
+```code
 .
 ├── bmi
 │   ├── admin.py
@@ -42,3 +43,4 @@ A Django project to calculate BMI
     ├── lib
     ├── lib64 -> lib
     └── pyvenv.cfg
+```
