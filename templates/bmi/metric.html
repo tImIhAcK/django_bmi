@@ -1,0 +1,58 @@
+{% extends 'bmi/base.html' %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+    <div class="row">
+        <div class="col-md-6 col-sm-12 col-xs-12">
+            <div class="d-flex justify-content-center">
+                <a class="btn btn-primary" href="{% url 'bmi:metric' %}">Metric</a>
+                <a class="btn btn-primary" href="{% url 'bmi:imperial' %}">Imperial</a>
+            </div>
+        </div>
+    </div>
+    <div class="bg-success text-white" id='result'>
+
+    </div>
+    <div class="row py-2">
+        <div class="col-md-6 col-sm-12 col-xs-12">
+            <form action="" method='POST' id='metric'>
+                {% csrf_token %}
+                {% crispy form %}
+            </form>
+        </div>
+    </div>
+{% endblock content %}
+
+{% block javascript %}
+    <script>
+        $('#metric').submit( function (e) {
+            e.preventDefault();
+
+            var serializedData = $(this).serialize();
+            $.ajax({
+                type: 'POST',
+                url: "{% url 'bmi:metric' %}",
+                data: serializedData,             
+                cache: false,
+                processData: false,
+                contentType: false,
+                enctype: 'multipart/form-data',
+                success: function(response){
+                    # reset form on success
+                    //$('#metric').trigger('reset');
+                    //$('#id_weight').focus();
+
+                    var instance = JSON.parse(response['bmi']);
+                    //var result = instance[0]['']
+                    //$('#result').innerHTML = result
+                    alert('the data has been posted...' + bmi)
+                },
+                error: function(xhr, errmsg, err) {
+                  console.log(xhr.status + ":" + xhr.responseText)
+                }
+            });
+
+        });
+
+    </script>
+{% endblock javascript %}

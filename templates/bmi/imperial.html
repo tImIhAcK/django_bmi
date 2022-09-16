@@ -2,12 +2,20 @@
 {% load crispy_forms_tags %}
 
 {% block content %}
-    <div class="row py-2">
+    <div class="row">
         <div class="col-md-6 col-sm-12 col-xs-12">
-            <div class="d-grid gap-2 mx-auto">
+            <div class="d-flex justify-content-center">
                 <a class="btn btn-primary" href="{% url 'bmi:metric' %}">Metric</a>
                 <a class="btn btn-primary" href="{% url 'bmi:imperial' %}">Imperial</a>
             </div>
+        </div>
+    </div>
+    <div class="row py-2">
+        <div class="col-md-6 col-sm-12 col-xs-12">
+            <form action="" method='POST'>
+                {% csrf_token %}
+                {% crispy form %}
+            </form>
         </div>
     </div>
 {% endblock content %}
