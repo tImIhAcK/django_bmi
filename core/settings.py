@@ -1,6 +1,7 @@
 import os
 from pathlib import Path
 from decouple import config
+from django.urls import reverse_lazy
 import locale
 
 
@@ -77,7 +78,7 @@ WSGI_APPLICATION = "core.wsgi.application"
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.sqlite3",
-        "NAME": config("DB_MANE")
+        "NAME": BASE_DIR / "db.sqlite3"
     }
 }
 
@@ -121,8 +122,8 @@ STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 
-LOGIN_URL = 'accounts:auths.html'
-LOGIN_REDIRECT_URL = 'bmi:index.html'
+LOGIN_URL = reverse_lazy('accounts:login')
+LOGIN_REDIRECT_URL = reverse_lazy('bmi:index')
 
 
 # Crispy Settngs
