@@ -10,7 +10,7 @@
     </div>
     <div class="row align-items-center justify-content-center">
         <div class="col-md-6">
-            <form  action="{% url 'accounts:register' %}" method='post'>
+            <form  action="{% url 'accounts:register' %}" method='POST'>
                 {% csrf_token %}
                 {% crispy form %}
             </form>
