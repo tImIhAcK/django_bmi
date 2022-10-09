@@ -1,21 +1,20 @@
-{% extends 'bmi/base.html' %}
-{% load crispy_forms_tags %}
-
 {% block content %}
-    <div class="row">
-        <div class="col-md-6 col-sm-12 col-xs-12">
-            <div class="d-flex justify-content-center">
-                <a class="btn btn-primary" href="{% url 'bmi:metric' %}">Metric</a>
-                <a class="btn btn-primary" href="{% url 'bmi:imperial' %}">Imperial</a>
-            </div>
-        </div>
-    </div>
     <div class="row py-2">
-        <div class="col-md-6 col-sm-12 col-xs-12">
-            <form action="" method='POST'>
-                {% csrf_token %}
-                {% crispy form %}
-            </form>
-        </div>
+        <form action="{% url 'bmi:index' %}" method='POST'>
+            {% csrf_token %}
+            <div class="col-12 mb-3">
+                <label for="weight-imperial" class="form-label">Weight(lbs) <span class='asterikField'>*</span></label>
+                <input type="number" step="0.01" min='0' name='weight-imperial' class="form-control" id="weight-imperial" required>
+    
+            </div>
+            <div class="col-12">
+                <label for="">Height<span class='asterikField'>*</span></label>
+                <div class="input-group mb-3">
+                    <input type="number" step="0.01" min='0' name='feet' class="form-control" placeholder="feet" aria-label="feet" required>
+                    <input type="number" step="0.01" min='0' name='inches' class="form-control" placeholder="inches" aria-label="inches" required>
+                </div>
+            </div>
+            <button type="submit" class="btn btn-primary">Calculate</button>
+        </form>
     </div>
 {% endblock content %}

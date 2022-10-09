@@ -4,9 +4,21 @@
 {% block content %}
     <div class="row py-2">
         <div class="col-md-6 col-sm-12 col-xs-12">
-            <div class="d-grid gap-2 mx-auto">
-                <a class="btn btn-primary" href="{% url 'bmi:metric' %}">Metric</a>
-                <a class="btn btn-primary" href="{% url 'bmi:imperial' %}">Imperial</a>
+            <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link active" id="pills-metric-tab" data-bs-toggle="pill" data-bs-target="#pills-metric" type="button" role="tab" aria-controls="pills-metric" aria-selected="true">Metric</button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="pills-imperial-tab" data-bs-toggle="pill" data-bs-target="#pills-imperial" type="button" role="tab" aria-controls="pills-imperial" aria-selected="false">Imperial</button>
+                </li>
+            </ul>
+            <div class="tab-content" id="pills-tabContent">
+                <div class="tab-pane fade show active" id="pills-metric" role="tabpanel" aria-labelledby="pills-metric-tab">
+                    {% include 'bmi/metric.html' %}
+                </div>
+                <div class="tab-pane fade" id="pills-imperial" role="tabpanel" aria-labelledby="pills-imperial-tab">
+                    {% include 'bmi/imperial.html' %}
+                </div>
             </div>
         </div>
     </div>
